@@ -32,6 +32,7 @@ class NetworkApiService implements BaseApiService {
 
       switch (response.statusCode) {
         case 200:
+          log(body.toString());
           return body;
         case 400:
           throw BadRequestException(message, response.statusCode);

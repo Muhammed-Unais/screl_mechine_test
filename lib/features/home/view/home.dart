@@ -10,10 +10,20 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   
+
+  @override
+  void initState() {
+    
+    super.initState();
+  }
+   
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      body: Center(
+        child: Text("Home"),
+      )
+    );
   }
 }
