@@ -8,7 +8,7 @@ import 'package:screl_mechine_test/res/app_url.dart';
 
 class NetworkApiService implements BaseApiService {
   @override
-  Future<Map<String, dynamic>> getGetApiResponse(String endPoint) async {
+  Future<dynamic> getGetApiResponse(String endPoint) async {
     try {
       var uri = Uri.http(AppUrl.baseUrl, endPoint);
       Response response = await http.get(uri);
@@ -20,20 +20,14 @@ class NetworkApiService implements BaseApiService {
     }
   }
 
-  Map<String, dynamic> returnResponse(Response? response) {
+  dynamic returnResponse(Response? response) {
     if (response != null) {
       dynamic message;
 
-      var body = jsonDecode(response.body) as Map<String, dynamic>;
-
-      if (body.containsKey("message")) {
-        message = body["message"];
-      }
-
       switch (response.statusCode) {
         case 200:
-          log(body.toString());
-          return body;
+          log(response.body);
+          return response.body;
         case 400:
           throw BadRequestException(message, response.statusCode);
         case 401:
