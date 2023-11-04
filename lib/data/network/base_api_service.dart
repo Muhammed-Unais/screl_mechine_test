@@ -1,5 +1,5 @@
 abstract interface class BaseApiService {
-  Future<dynamic> getGetApiResponse(
+  Future<Map<String, dynamic>> getGetApiResponse(
     String endPoint,
   );
 }
